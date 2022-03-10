@@ -9,8 +9,26 @@ function Input(props) {
   const { data, setData, email, password, telephone } = props;
   const [validation, setValidation] = useState(false);
 
+  // check telephone validation
   const telephoneValidation = () => {
-    const regex = /^\+?[0-9]{10}$/g;
+    const regex = /^\+?[0-9]{9}$/g;
+    if (regex.test(data)) {
+      inputRef.current.classList.remove("input_error");
+      inputRef.current.classList.add("input_validation");
+      smallRef.current.classList.remove("active");
+      setValidation(true);
+    } else {
+      inputRef.current.classList.add("input_error");
+      inputRef.current.classList.remove("input_validation");
+      smallRef.current.classList.add("active");
+      setValidation(false);
+    }
+  };
+
+  // check email validation
+  const emailValidation = () => {
+    const regex =
+      /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/g;
     if (regex.test(data)) {
       inputRef.current.classList.remove("input_error");
       inputRef.current.classList.add("input_validation");
@@ -62,7 +80,7 @@ function Input(props) {
           value={data}
           onChange={(e) => {
             setData(e.target.value);
-            telephoneValidation();
+            emailValidation();
           }}
         />
       ) : null}

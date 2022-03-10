@@ -6,6 +6,7 @@ import Input from "../Input/Input";
 function PopupLogin() {
   const [telephone, setTelephone] = useState("");
   const [email, setEmail] = useState("");
+  // const [pass, setPass] = useState('');
   // console.log(telephone);
   return (
     <>
