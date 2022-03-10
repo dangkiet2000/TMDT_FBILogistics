@@ -1,0 +1,74 @@
+.form {
+  @include flex(flex-start, space-between);
+  gap: 20px;
+  flex-direction: column;
+  width: 600px;
+  min-height: 500px;
+  padding: 50px 34px;
+
+  background: $mainBg;
+  color: $black;
+
+  border-radius: 10px;
+  z-index: 2;
+
+  div{
+    width: 100%;
+  }
+
+  svg{
+    margin-bottom: 20px;
+  }
+
+  &_title {
+    font-size: 24px;
+    font-weight: bold;
+    line-height: 1;
+    text-transform: capitalize;
+  }
+  &_subTitle {
+    font-size: 15px;
+  }
+
+  &_text {
+    margin-top: 25px;
+    margin: 25px auto 0 auto;
+    width: fit-content;
+
+    font-size: 14px;
+    text-align: center;
+    cursor: pointer;
+
+    a {
+      color: #0d80d0;
+    }
+  }
+
+  &_login-with-social {
+    margin-top: auto;
+
+    p {
+      width: fit-content;
+      margin: 0 auto;
+
+      font-size: 14px;
+      color: #787878;
+      text-align: center;
+    }
+
+    ul {
+      @include flex(center, center);
+      margin-top: 18px;
+      gap: 40px;
+    }
+
+    li {
+      @include flex(center, center);
+    }
+
+    img {
+      width: 40px;
+      height: 40px;
+    }
+  }
+}
