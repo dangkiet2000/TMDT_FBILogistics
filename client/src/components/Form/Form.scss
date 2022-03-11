@@ -1,9 +1,9 @@
 .form {
-  @include flex(flex-start, space-between);
+  @include flex(flex-start, flex-start);
   gap: 20px;
   flex-direction: column;
   width: 600px;
-  min-height: 500px;
+  height: auto;
   padding: 50px 34px;
 
   background: $mainBg;
@@ -12,12 +12,14 @@
   border-radius: 10px;
   z-index: 2;
 
-  div{
+  div {
     width: 100%;
   }
 
-  svg{
+  svg {
     margin-bottom: 20px;
+
+    cursor: pointer;
   }
 
   &_title {

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 function Input(props) {
   const inputRef = React.createRef(null);
@@ -42,6 +42,14 @@ function Input(props) {
     }
   };
 
+  useEffect(() => {
+    sendData();
+  }, [validation]);
+
+  const sendData = () => {
+    props.parentCallback(validation);
+  };
+
   const showPass = () => {
     inputRef.current.setAttribute("type", "text");
     eye.current.style.display = "none";
@@ -58,8 +66,8 @@ function Input(props) {
     <>
       {telephone ? (
         <input
-          ref="text"
-          type={props.type}
+          ref={inputRef}
+          type="text"
           placeholder="Số điện thoại"
           // className={`input ${validation ? "input_validation" : "input_error"}`}
           className="input"
@@ -68,6 +76,7 @@ function Input(props) {
             setData(e.target.value);
             telephoneValidation();
           }}
+          required={true}
         />
       ) : null}
       {email ? (
@@ -82,6 +91,7 @@ function Input(props) {
             setData(e.target.value);
             emailValidation();
           }}
+          required={true}
         />
       ) : null}
       {password ? (
@@ -96,6 +106,7 @@ function Input(props) {
             onChange={(e) => {
               setData(e.target.value);
             }}
+            required={true}
           />
           <svg
             ref={eye}

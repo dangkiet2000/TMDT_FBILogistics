@@ -3,7 +3,7 @@ import { images } from "../../constants";
 
 const Form = (props) => {
   return (
-    <form action="" className="form">
+    <form action="" className="form" onSubmit={(e) => e.preventDefault()}>
       {props.btnPrev ? (
         <svg
           width="20"
@@ -11,6 +11,7 @@ const Form = (props) => {
           viewBox="0 0 35 35"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
+          onClick={props.btnPrevClick}
         >
           <g clipPath="url(#clip0_102_1771)">
             <path
