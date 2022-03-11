@@ -23,7 +23,7 @@ function PopupLogin() {
           <p className="form_text">
             Chưa có tài khoản? <a>Tạo tài khoản</a>
             <br />
-            <a>Đặng nhập bằng email</a>
+            <a>Đăng nhập bằng email</a>
           </p>
         </Form>
       </div>

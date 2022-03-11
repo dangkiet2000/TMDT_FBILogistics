@@ -6,7 +6,7 @@ function Input(props) {
   const eye = React.createRef(null);
   const eyeClose = React.createRef(null);
 
-  const { data, setData, email, password, telephone } = props;
+  const { data, setData, email, password, telephone, forgotPassword } = props;
   const [validation, setValidation] = useState(false);
 
   const telephoneValidation = () => {
@@ -40,7 +40,7 @@ function Input(props) {
     <>
       {telephone ? (
         <input
-          ref="text"
+          ref={inputRef}
           type={props.type}
           placeholder="Số điện thoại"
           // className={`input ${validation ? "input_validation" : "input_error"}`}
@@ -63,6 +63,21 @@ function Input(props) {
           onChange={(e) => {
             setData(e.target.value);
             telephoneValidation();
+          }}
+        />
+      ) : null}
+      {forgotPassword ? (
+        <input
+          ref={inputRef}
+          type="text"
+          placeholder="Số điện thoại/ Email"
+          className="input"
+          value={data}
+          onChange={(e) => {
+            setData(e.target.value);
+            telephoneValidation();
+            // emailValidation
+            
           }}
         />
       ) : null}
