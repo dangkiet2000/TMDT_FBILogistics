@@ -47,3 +47,9 @@ small {
     display: block;
   }
 }
+.css-8tndtw-MuiInputBase-root-MuiFilledInput-root:before {
+  content: none !important;
+}
+.css-8tndtw-MuiInputBase-root-MuiFilledInput-root::after {
+  content: none !important;
+}

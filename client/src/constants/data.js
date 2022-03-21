@@ -51,4 +51,6 @@ const awards = [
   },
 ];
 
-export default { wines, awards };
+const data = { wines, awards };
+
+export default data;

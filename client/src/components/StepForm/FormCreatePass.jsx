@@ -1,10 +1,11 @@
-import React from "react";
+import React,{useState} from "react";
 import Button from "../Button/Button";
 import Form from "../Form/Form";
 import Input from "../Input/Input";
 
 function FormCreatePass({ navigation }) {
-  const [email, setEmail] = React.useState("");
+  const [pass, setPass] = useState("");
+  const [rePass, setRePass] = useState("");
   const [validation, setValidation] = React.useState(false);
   const callbackFunction = (childData) => {
     setValidation(childData);
@@ -12,6 +13,8 @@ function FormCreatePass({ navigation }) {
   const handleSubmit = (e) => {
     e.preventDefault();
   };
+  // console.log(pass, rePass);
+  // console.log(rePass);
   return (
     <Form
       title={"tạo mật khẩu"}
@@ -21,16 +24,19 @@ function FormCreatePass({ navigation }) {
       btnPrevClick={() => navigation.previous()}
     >
       <Input
-        data={email}
-        setData={setEmail}
-        telephone={true}
+        pass={pass}
+        setPass={setPass}
+        password={true}
         parentCallback={(validation) => callbackFunction(validation)}
+        placeholder={"Nhập mật khẩu"}
       />
       <Input
-        data={email}
-        setData={setEmail}
-        telephone={true}
+        pass={pass}
+        rePass={rePass}
+        setRePass={setRePass}
+        rePassword={true}
         parentCallback={(validation) => callbackFunction(validation)}
+        placeholder={"Nhập lại mật khẩu"}
       />
       <Button
         validation={validation}

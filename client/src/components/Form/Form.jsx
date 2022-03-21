@@ -28,7 +28,10 @@ const Form = (props) => {
       ) : null}
       <div>
         <p className="form_title">{props.title}</p>
-        <p className="form_subTitle">{props.subTitle}</p>
+        <p className="form_subTitle">
+          {props.subTitle}&nbsp;
+          <b>{props.textTelephone}</b>
+        </p>
         {props.children}
       </div>
       {props.loginSocial ? (

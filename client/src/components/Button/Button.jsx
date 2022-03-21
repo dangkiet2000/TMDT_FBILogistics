@@ -1,7 +1,7 @@
 import React from "react";
 
 function Button(props) {
-  console.log(props.validation);
+  // console.log(props.validation);
   return (
     <button
       className="btn"

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { useStep } from "react-hooks-helper";
 import FormCreateAccount from "../StepForm/FormCreateAccount";
 import FormCreatePass from "../StepForm/FormCreatePass";
@@ -22,12 +22,12 @@ const steps = [
 ];
 
 function PopupLogin() {
-  const [telephone, setTelephone] = useState("");
-  const [email, setEmail] = useState("");
+  // const [telephone, setTelephone] = useState("");
+  // const [email, setEmail] = useState("");
   // const [formData, setForm] = useForm(defaultData);
   const { step, navigation } = useStep({
     steps,
-    initialStep: 0,
+    initialStep: "login",
     // onStepChange: (step) => {
     //   console.log(step);
     // },

@@ -4,7 +4,8 @@ import Form from "../Form/Form";
 import Input from "../Input/Input";
 
 function FormForgetPass({ navigation }) {
-  const [email, setEmail] = React.useState("");
+  const [pass, setPass] = React.useState("");
+
   const [validation, setValidation] = React.useState(false);
   const callbackFunction = (childData) => {
     setValidation(childData);
@@ -12,6 +13,7 @@ function FormForgetPass({ navigation }) {
   const handleSubmit = (e) => {
     e.preventDefault();
   };
+  console.log(validation);
   return (
     <Form
       title={"Quên mật khẩu"}
@@ -20,11 +22,11 @@ function FormForgetPass({ navigation }) {
       btnPrevClick={() => navigation.previous()}
     >
       <Input
-        data={email}
-        setData={setEmail}
+        data={pass}
+        setData={setPass}
         email={true}
         parentCallback={(validation) => callbackFunction(validation)}
-        />
+      />
       <Button onClick={handleSubmit}>Xác Minh</Button>
     </Form>
   );

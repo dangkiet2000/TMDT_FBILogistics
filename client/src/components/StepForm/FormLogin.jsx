@@ -22,6 +22,7 @@ function FormLogin({ navigation }) {
       loginSocial={true}
     >
       <Input
+        placeholder={"Số điện thoại"}
         data={email}
         setData={setEmail}
         telephone={true}
@@ -31,6 +32,7 @@ function FormLogin({ navigation }) {
       <p className="form_text">
         Chưa có tài khoản?{" "}
         <a
+          href="/#"
           onClick={(e) => {
             handleSubmit(e);
             navigation.next();
@@ -40,6 +42,7 @@ function FormLogin({ navigation }) {
         </a>
         <br />
         <a
+          href="/#"
           onClick={(e) => {
             handleSubmit(e);
             navigation.go("loginEmail");

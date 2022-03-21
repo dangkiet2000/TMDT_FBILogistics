@@ -23,8 +23,9 @@ function FormCreateAccount({ navigation }) {
       <Input
         data={email}
         setData={setEmail}
-        telephone={true}
+        telephoneAndEmail={true}
         parentCallback={(validation) => callbackFunction(validation)}
+        placeholder={"Số điện thoại/Email"}
       />
       <Button
         validation={validation}

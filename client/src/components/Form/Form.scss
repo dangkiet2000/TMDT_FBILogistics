@@ -74,3 +74,24 @@
     }
   }
 }
+.otp {
+  &-container {
+    @include flex(center, center);
+    flex-wrap: wrap;
+
+    input[type="tel"] {
+      margin: 0 10px;
+
+      font-size: 32px;
+      width: 20px;
+      border: 0;
+      outline: none;
+      border-bottom: 1px solid #787878;
+      text-align: center;
+      line-height: 1.5;
+    }
+    input[type="tel"]:not(:placeholder-shown) {
+      border: none;
+    }
+  }
+}

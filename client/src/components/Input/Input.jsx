@@ -6,7 +6,20 @@ function Input(props) {
   const eye = React.createRef(null);
   const eyeClose = React.createRef(null);
 
-  const { data, setData, email, password, telephone } = props;
+  const {
+    data,
+    setData,
+    rePass,
+    setRePass,
+    pass,
+    setPass,
+    email,
+    password,
+    telephone,
+    telephoneAndEmail,
+    rePassword,
+  } = props;
+
   const [validation, setValidation] = useState(false);
 
   // check telephone validation
@@ -42,12 +55,59 @@ function Input(props) {
     }
   };
 
-  useEffect(() => {
-    sendData();
-  }, [validation]);
+  //check email and telephone validation
+  const telephoneAndEmailValidation = () => {
+    const regex = /^\+?[0-9]{9}$/g;
+    const regexEmail =
+      /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/g;
+    if (regex.test(data) || regexEmail.test(data)) {
+      inputRef.current.classList.remove("input_error");
+      inputRef.current.classList.add("input_validation");
+      smallRef.current.classList.remove("active");
+      setValidation(true);
+    } else {
+      inputRef.current.classList.add("input_error");
+      inputRef.current.classList.remove("input_validation");
+      smallRef.current.classList.add("active");
+      setValidation(false);
+    }
+  };
 
-  const sendData = () => {
-    props.parentCallback(validation);
+  //check password validation
+  const passwordValidation = () => {
+    console.log(pass);
+    const regex =
+      // /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/g;
+      /^\+?[0-9]{9}$/g;
+    if (regex.test(pass)) {
+      inputRef.current.classList.remove("input_error");
+      inputRef.current.classList.add("input_validation");
+      smallRef.current.classList.remove("active");
+      setValidation(true);
+    } else {
+      inputRef.current.classList.add("input_error");
+      inputRef.current.classList.remove("input_validation");
+      smallRef.current.classList.add("active");
+      setValidation(false);
+    }
+  };
+
+  const test = rePass;
+  //check rePassword validation
+  const rePasswordValidation = () => {
+    if (test === pass) {
+      // console.log(rePass, pass);
+      inputRef.current.classList.remove("input_error");
+      inputRef.current.classList.add("input_validation");
+      smallRef.current.classList.remove("active");
+      setValidation(true);
+    } else {
+      // console.log(rePass, pass);
+      inputRef.current.classList.add("input_error");
+      inputRef.current.classList.remove("input_validation");
+      smallRef.current.classList.add("active");
+      setValidation(false);
+    }
   };
 
   const showPass = () => {
@@ -62,13 +122,21 @@ function Input(props) {
     eyeClose.current.style.display = "none";
   };
 
+  const sendData = () => {
+    props.parentCallback(validation);
+  };
+
+  useEffect(() => {
+    sendData();
+  }, [validation]);
+
   return (
     <>
       {telephone ? (
         <input
           ref={inputRef}
           type="text"
-          placeholder="Số điện thoại"
+          placeholder={props.placeholder}
           // className={`input ${validation ? "input_validation" : "input_error"}`}
           className="input"
           value={data}
@@ -83,7 +151,7 @@ function Input(props) {
         <input
           ref={inputRef}
           type="text"
-          placeholder="abc@email.com"
+          placeholder={props.placeholder}
           // className={`input ${validation ? "input_validation" : "input_error"}`}
           className="input"
           value={data}
@@ -94,17 +162,33 @@ function Input(props) {
           required={true}
         />
       ) : null}
+      {telephoneAndEmail ? (
+        <input
+          ref={inputRef}
+          type="text"
+          placeholder={props.placeholder}
+          // className={`input ${validation ? "input_validation" : "input_error"}`}
+          className="input"
+          value={data}
+          onChange={(e) => {
+            setData(e.target.value);
+            telephoneAndEmailValidation();
+          }}
+          required={true}
+        />
+      ) : null}
       {password ? (
         <div className="field">
           <input
             ref={inputRef}
             type="password"
-            placeholder="Mật khẩu"
+            placeholder={props.placeholder}
             // className={`input ${validation ? "input_validation" : "input_error"}`}
             className="input"
-            value={data}
+            value={pass}
             onChange={(e) => {
-              setData(e.target.value);
+              setPass(e.target.value);
+              passwordValidation();
             }}
             required={true}
           />
@@ -139,6 +223,20 @@ function Input(props) {
             />
           </svg>
         </div>
+      ) : null}
+      {rePassword ? (
+        <input
+          ref={inputRef}
+          type="text"
+          placeholder={props.placeholder}
+          className="input"
+          value={rePass}
+          onChange={(e) => {
+            setRePass(e.target.value);
+            rePasswordValidation();
+          }}
+          required={true}
+        />
       ) : null}
       <small ref={smallRef}>
         Nhập {props.placeholder} không đúng định dạng
